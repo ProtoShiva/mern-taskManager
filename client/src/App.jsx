@@ -1,5 +1,4 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom"
-import axios from "axios"
 import RegisterPage from "./pages/registerPage/RegisterPage"
 import LoginPage from "./pages/loginPage/LoginPage"
 import Dashboard from "./pages/DashBoardPage/Dashboard.jsx"
@@ -11,9 +10,6 @@ import PrivateRoute from "./components/PrivateRoute.jsx"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import { UserContextProvider } from "./context/UserContext.jsx"
-
-axios.defaults.baseURL = "http://localhost:3000"
-axios.defaults.withCredentials = true
 
 const App = () => {
   return (
