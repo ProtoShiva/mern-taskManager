@@ -112,14 +112,14 @@ const Card = ({ card, section }) => {
   const handleShare = async (id) => {
     navigate(`/info/${id}`)
     togglePopup(id)
-    const infoUrl = `${window.location.origin}/info`
+    const infoUrl = `${window.location.origin}/info/${id}`
     navigator.clipboard
       .writeText(infoUrl)
       .then(() => {
         toast.success("URL copied to clipboard")
       })
       .catch((err) => {
-        toast.error("Could not copy URL: ")
+        toast.error("Could not copy URL:", err)
       })
   }
 
