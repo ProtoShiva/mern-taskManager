@@ -110,7 +110,6 @@ const Card = ({ card, section }) => {
   }
 
   const handleShare = async (id) => {
-    setShareId(id)
     navigate(`/info/${id}`)
     togglePopup(id)
     const infoUrl = `${window.location.origin}/info`
