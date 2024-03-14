@@ -4,15 +4,32 @@ import { FiCodesandbox } from "react-icons/fi"
 import { UserContext } from "../../context/UserContext"
 import { format, parseISO, isPast } from "date-fns"
 import { v4 as uuidv4 } from "uuid"
+import axios from "axios"
+import { useParams } from "react-router-dom"
 
-const SharePage = () => {
+const SharePage = async () => {
+  const params = useParams()
   const { shareCard, setShareCard } = useContext(UserContext)
+
   useEffect(() => {
-    const savedShareCard = localStorage.getItem("shareCard")
-    if (savedShareCard) {
-      setShareCard(JSON.parse(savedShareCard))
+    const fetchCard = async () => {
+      try {
+        const response = await axios.get(`/api/cards/card/${params.infoId}`)
+        const cardData = response.data
+
+        setShareCard({
+          heading: cardData.title,
+          prior: cardData.priority,
+          date: cardData.duedate,
+          fields: cardData.inputs,
+          stat: cardData.status
+        })
+      } catch (error) {
+        console.log(error)
+      }
     }
-  }, [])
+    fetchCard()
+  }, [params.infoId])
 
   const handleCss = (p) => {
     switch (p) {

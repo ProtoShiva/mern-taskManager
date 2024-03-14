@@ -27,6 +27,7 @@ export function UserContextProvider({ children }) {
     fields: [],
     stat: ""
   })
+
   const [refresh, setRefresh] = useState(false)
 
   return (

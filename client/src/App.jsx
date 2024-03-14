@@ -29,7 +29,7 @@ const App = () => {
                 <Route path="/dashboard/settings" element={<SettingsPage />} />
               </Route>
             </Route>
-            <Route path="/info" element={<SharePage />} />
+            <Route path="/info/:infoId" element={<SharePage />} />
           </Routes>
         </BrowserRouter>
       </UserContextProvider>

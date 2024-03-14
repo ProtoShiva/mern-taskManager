@@ -33,10 +33,7 @@ const Card = ({ card, section }) => {
     openDropdownIds,
     setOpenDropdownIds,
     refresh,
-    setRefresh,
-    setStatus,
-    shareCard,
-    setShareCard
+    setRefresh
   } = useContext(UserContext)
 
   useEffect(() => {
@@ -113,21 +110,8 @@ const Card = ({ card, section }) => {
   }
 
   const handleShare = async (id) => {
-    const response = await axios.get(`/api/cards/card/${id}`)
-    const cardData = response.data
-    navigate("/info")
-    const newShareCard = {
-      heading: cardData.title,
-      prior: cardData.priority,
-      date: cardData.duedate,
-      fields: cardData.inputs,
-      stat: cardData.status
-    }
-
-    setShareCard(newShareCard)
-
-    localStorage.setItem("shareCard", JSON.stringify(newShareCard))
-
+    setShareId(id)
+    navigate(`/info/${id}`)
     togglePopup(id)
     const infoUrl = `${window.location.origin}/info`
     navigator.clipboard
