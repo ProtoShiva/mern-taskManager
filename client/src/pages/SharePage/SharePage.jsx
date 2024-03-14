@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import Styles from "./SharePage.module.css"
 import { FiCodesandbox } from "react-icons/fi"
 import { UserContext } from "../../context/UserContext"
