@@ -6,7 +6,13 @@ import { format, parseISO, isPast } from "date-fns"
 import { v4 as uuidv4 } from "uuid"
 
 const SharePage = () => {
-  const { shareCard } = useContext(UserContext)
+  const { shareCard, setShareCard } = useContext(UserContext)
+  useEffect(() => {
+    const savedShareCard = localStorage.getItem("shareCard")
+    if (savedShareCard) {
+      setShareCard(JSON.parse(savedShareCard))
+    }
+  }, [])
 
   const handleCss = (p) => {
     switch (p) {

@@ -116,13 +116,17 @@ const Card = ({ card, section }) => {
     const response = await axios.get(`/api/cards/card/${id}`)
     const cardData = response.data
     navigate("/info")
-    setShareCard({
+    const newShareCard = {
       heading: cardData.title,
       prior: cardData.priority,
       date: cardData.duedate,
       fields: cardData.inputs,
       stat: cardData.status
-    })
+    }
+
+    setShareCard(newShareCard)
+
+    localStorage.setItem("shareCard", JSON.stringify(newShareCard))
 
     togglePopup(id)
     const infoUrl = `${window.location.origin}/info`
